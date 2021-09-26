@@ -1,0 +1,45 @@
+{% include "base/index.html" %}
+{% block estilo %}
+<link href="../../static/css/miPerfil.css" rel="stylesheet">
+{% endblock %}
+{% include "base/navEstado.html" %}
+{% block content %}
+  <main class="container">
+    {% include "base/cartel.html" %}
+    {% if equipo_list %}
+      {% for i in equipo_list %}
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Equipo {{i.numero}} - {{ i.name }}</h6>
+          {% for j in alumnos %}
+            {% if i.id == j.equipo.id %}
+              <div class="d-flex text-muted p-3 abs-centro">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{j.foto}}"><strong class="text-gray-dark">&nbsp {{j.username}}</strong></div>
+                   
+                    <div class="p-2 no-seleccionable">
+                      <a href="{#{% url 'transferir_azul' origen_pk=perfil.id destino_pk=j.id %}#}">
+                        <img src="https://i.imgur.com/JL6bliV.png}" class="icono-barco">
+                      </a><span class="badge bg-primary rounded-pill">{{ j.azul }}</span>
+                    </div> 
+
+                    <div class="p-2 no-seleccionable">
+                      <a href="{#{% url 'transferir_dorado' origen_pk=perfil.pk destino_pk=j.pk %}#}">
+                        <img src="https://i.imgur.com/lMcSYHr.png" class="icono-barco">
+                      </a><span class="badge bg-warning rounded-pill">{{ j.dorado }}</span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="alert alert-warning" role="alert">
+        No hay equipo registrados
+      </div>
+    {% endif %}
+  <main class="container">
+{% endblock %}

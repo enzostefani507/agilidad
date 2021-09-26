@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" aria-label="Main navigation">
+    <div class="container-fluid no-seleccionable">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="https://utn.edu.ar/images/logo-utn.png"  height="30" class="d-inline-block align-top" alt="">
+        Agilidad ❥
+      </a>
+      <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'estado' %}">Estado</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'felicidad' %}">Felicidad</a>
+          </li>
+        </ul>
+        {% include "base/estadoCuenta.html" %}
+      </div>
+    </div>
+    
+</nav>
+
+<div class="nav-scroller bg-body shadow-sm">
+    <nav class="nav nav-underline" aria-label="Secondary navigation">
+      <a class="nav-link" href="#">Unidad 1</a>
+      <a class="nav-link" href="#">Unidad 2</a>
+      <a class="nav-link" href="#">Unidad 3</a>
+      <a class="nav-link" href="#">Unidad 4</a>
+    </nav>
+</div>

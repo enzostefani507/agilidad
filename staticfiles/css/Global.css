@@ -1,0 +1,11 @@
+.abs-centro{
+    display: flex;
+    align-items: center;
+}
+
+.no-seleccionable{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
