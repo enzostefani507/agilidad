@@ -1,9 +1,13 @@
 # Requerimientos
 
-- Python3.8
+- Python3.8   https://www.python.org/downloads/
+
+# Paso previo
+-  python3 -m venv entornoAgil https://docs.python.org/es/3/tutorial/venv.html
+-  cd entornoAgil 
+-  git clone https://github.com/enzostefani507/agilidad/
 
 # Instrucciones
-
 * cd entornoAgil
 * source bin/activate
 * cd Agilidad
