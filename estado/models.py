@@ -2,18 +2,25 @@ from django.db import models
 from perfil.models import Usuario
 
 class cambios(models.Model):
+    TIPOS = [
+        ('Dorado','dorado'),
+        ('Azul','azul')
+    ]
     tipo = models.CharField(
-        max_length=50
+        max_length=6,
+        choices = TIPOS,
     )
     origen = models.ForeignKey(
         Usuario,
         default=None,
         on_delete=models.CASCADE,
-        related_name="cambio_origen"
+        related_name="origen_id"
     )
     destino = models.ForeignKey(
         Usuario,
         default=None,
         on_delete=models.CASCADE,
-        related_name="cambio_destino"
+        related_name="destino_id"
     )
+
+

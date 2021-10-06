@@ -1,9 +1,8 @@
 from django.conf.urls import url
-from . import views
-from django.views.generic import TemplateView
+from estado.views import estado,transaccion
+
 
 urlpatterns = [
-    url('', views.estado.as_view(), name='estado'),
-    url('transferir_azul/<int:origen_pk>/<int:destino_pk>/', views.transferir_azul,name='transferir_azul'),
-    url('transferir_dorado/<int:origen_pk>/<int:destino_pk>/', views.transferir_dorado,name='transferir_dorado')
+    url('crear_cambio/', transaccion.as_view(), name='cambiar'),
+    url('', estado.as_view(), name='estado'),
 ]

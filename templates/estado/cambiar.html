@@ -1,0 +1,14 @@
+{% include "base/index.html" %}
+{% block estilo %}
+{% endblock %}
+{% include "base/navEstado.html" %}
+{% block content %}
+  <main class="container">
+    {% include "base/cartel.html" %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+  <main class="container">
+{% endblock %}

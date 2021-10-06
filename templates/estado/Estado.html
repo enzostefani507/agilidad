@@ -1,11 +1,11 @@
 {% include "base/index.html" %}
 {% block estilo %}
-<link href="../../static/css/miPerfil.css" rel="stylesheet">
 {% endblock %}
 {% include "base/navEstado.html" %}
 {% block content %}
   <main class="container">
     {% include "base/cartel.html" %}
+    <a href="{% url 'cambiar' %}">cambiar</a>
     {% if equipo_list %}
       {% for i in equipo_list %}
       <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -18,7 +18,7 @@
                     <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{j.foto}}"><strong class="text-gray-dark">&nbsp {{j.username}}</strong></div>
                    
                     <div class="p-2 no-seleccionable">
-                      <a href="{#{% url 'transferir_azul' origen_pk=perfil.id destino_pk=j.id %}#}">
+                      <a href="{#{% url 'transferir_azul' j.id %}#}">
                         <img src="https://i.imgur.com/JL6bliV.png}" class="icono-barco">
                       </a><span class="badge bg-primary rounded-pill">{{ j.azul }}</span>
                     </div> 
