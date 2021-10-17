@@ -6,7 +6,7 @@
 {% block content %}
 <main class="container">
   {% include "base/cartel.html" %}
-  <div class="my-3 p-3 bg-body rounded shadow-sm">
+  <div class="my-3 p-3 bg-body rounded shadow-sm" id="misdatos">
     <h6 class="border-bottom pb-2 mb-0">Mis datos</h6>
     <div class="d-flex text-muted p-3 abs-centro">
       <div class="pb-3 mb-0 small lh-sm  w-100">
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div class="my-3 p-3 bg-body rounded shadow-sm">
+  <div class="my-3 p-3 bg-body rounded shadow-sm" id="trofeos">
     <h6 class="border-bottom pb-2 mb-0">Mis Trofeos</h6>
     {% for i in transferencias %}
       {% if i.tipo == 'Dorado' %}
