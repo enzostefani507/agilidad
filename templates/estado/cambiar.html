@@ -1,14 +1,26 @@
+{% load crispy_forms_tags %}
 {% include "base/index.html" %}
 {% block estilo %}
 {% endblock %}
-{% include "base/navEstado.html" %}
+{% include "base/navCambiar.html" %}
 {% block content %}
   <main class="container">
     {% include "base/cartel.html" %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save">
-    </form>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-auto  ">
+        {% if user.gris_disponible == True %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy}}
+            <p style="color:red">{{catch}}</p>
+            <input type="submit" value="Transferir" class="mt-2 w-100 btn btn-primary">
+        </form>
+        {% else %}
+          <div class="alert alert-danger" role="alert">
+            Ya intercambiaste tu sombrero semanal
+          </div>
+        {% endif %}
+      </div>
+    </div>  
   <main class="container">
 {% endblock %}

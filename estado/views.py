@@ -9,17 +9,33 @@ from django.urls import reverse
 from estado.forms import CambioForm
 from django.urls import reverse_lazy
 
-class transaccion(CreateView):
-    model = cambios
-    form_class = CambioForm
-    template_name = 'estado/cambiar.html'
-    success_url = reverse_lazy('estado')
-    usuario = ''
-
-    def get_context_data(self, **kwargs):
-        context = super(transaccion, self).get_context_data(**kwargs)
-        context['nombreSeccion'] = '¿Estas seguro?'
-        return context
+def transaccion(request):
+    context = {}
+    context['nombreSeccion']='¿Estas seguro?'
+    if request.method == "POST":
+        form = CambioForm(request.POST)
+        user = request.user
+        if user.gris_disponible:
+            cambio = form.save(commit=False)
+            dest = cambio.destino
+            if user != dest:
+                if cambio.tipo == 'Dorado':
+                    dest.dorado += 1
+                else:
+                    dest.azul += 1
+                cambio.origen = user
+                tipo = cambio.tipo
+                user.gris_disponible = False
+                user.save()
+                dest.save()
+                cambio.save()
+                return redirect('estado')
+            else:
+                context['catch'] = "Te autoseleccionaste, ¿eres tan bueno?"
+    else:
+        form = CambioForm()
+    context['form'] = form
+    return render(request, 'estado/cambiar.html',context)
 
 
 class estado(LoginRequiredMixin,ListView):
