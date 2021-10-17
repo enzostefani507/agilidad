@@ -64,7 +64,7 @@ class Usuario(AbstractUser):
         verbose_name='gris_disponible',
         blank=False,
         default=True,
-    );
+    )
     azul = models.IntegerField(default=0)
     dorado = models.IntegerField(default=0)
     equipo = models.ForeignKey('Equipo',null=True,on_delete=models.SET_NULL)

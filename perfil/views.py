@@ -1,5 +1,6 @@
 from django import forms
 from perfil.models import Usuario,Equipo
+from estado.models import cambios
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
@@ -50,6 +51,7 @@ class miPerfil(LoginRequiredMixin, DetailView):
         context['nombreSeccion'] = 'Mi perfil'
         context['numEquipo'] = 'Sin asignar'
         user = Usuario.objects.filter(pk=self.request.user.id).first()
+        context['transferencias'] = cambios.objects.filter(destino=user)
         context['perfil'] = user
         equipo = user.equipo
         if equipo is not None:
