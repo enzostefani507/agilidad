@@ -10,9 +10,9 @@
   <div class="list-group">
     {% for i in unidades %}
       {% if i.actual %}
-      <div id="#{{i}}" class="list-group-item list-group-item-action p-3 mb-2 bg-success text-white" aria-current="true">
+      <div id="{{i}}" class="list-group-item list-group-item-action p-3 mb-2 bg-success text-white" aria-current="true">
       {% else %}
-      <div id="#{{i}}" class="list-group-item list-group-item-action p-3 mb-2" aria-current="true">
+      <div id="{{i}}" class="list-group-item list-group-item-action p-3 mb-2" aria-current="true">
       {% endif %}
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{i}}</h5>
