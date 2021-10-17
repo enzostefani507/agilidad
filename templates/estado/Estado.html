@@ -23,7 +23,7 @@
     {% if equipo_list %}
       {% for i in equipo_list %}
       <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0">Equipo {{i.numero}} - {{ i.name }}</h6>
+        <h6 class="border-bottom pb-2 mb-0" id="{{ i.name }}">Equipo {{i.numero}} - {{ i.name }}</h6>
           {% for j in alumnos %}
             {% if i.id == j.equipo.id %}
               <div class="d-flex text-muted p-3 abs-centro">
