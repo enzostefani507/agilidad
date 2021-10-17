@@ -3,63 +3,35 @@
 {% block content %}
 <main class="container">
   {% include "base/cartel.html" %}
-
   <div class="alert alert-secondary text-center" role="alert">
     Nunca fue tan facil escapar de la monarquia!
   </div>
-
+  {% if unidades %}
   <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Unidad 1</h5>
+    {% for i in unidades %}
+      {% if i.actual %}
+      <div id="#{{i}}" class="list-group-item list-group-item-action p-3 mb-2 bg-success text-white" aria-current="true">
+      {% else %}
+      <div id="#{{i}}" class="list-group-item list-group-item-action p-3 mb-2" aria-current="true">
+      {% endif %}
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{i}}</h5>
+        </div>
+        <ul class="list-group">
+          {% for j in contenido %}
+            {% if j.unidad == i %}
+            <li class="list-group-item">{{j.nombre}}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
       </div>
-      <ul class="list-group">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Unidad 2</h5>
-      </div>
-      <ul class="list-group">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Unidad 3</h5>
-      </div>
-      <ul class="list-group">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Unidad 4</h5>
-      </div>
-      <ul class="list-group">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-    </a>
+    <br>
   </div>
+  {% endfor %}
+  {% else %}
+  <div class="alert alert-warning" role="alert">
+        El temario no esta cargado todavia
+      </div>
+  {% endif %}
 </main>
 {% endblock %}

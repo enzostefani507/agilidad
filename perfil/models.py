@@ -72,6 +72,9 @@ class Usuario(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username','foto']
 
+    def __str__(self):
+        return self.username
+
 class Equipo(models.Model):
     numero = models.IntegerField()
     name = models.CharField(max_length=100)
