@@ -58,6 +58,7 @@ class miPerfil(LoginRequiredMixin, DetailView):
         if equipo is not None:
             context['nombreEquipo'] = equipo.name
             context['numeroEquipo'] = equipo.numero
+            context['puntosEquipo'] = equipo.puntos
         else:
             context['nombreEquipo'] = 'Sin asignar'
         return context
