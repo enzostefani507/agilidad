@@ -3,11 +3,11 @@
 {% block content %}
 <main class="container">
   {% include "base/cartel.html" %}
-  <div class="alert alert-secondary text-center" role="alert">
+  <div class="alert alert-secondary text-center" id="puntos-personas">
     <h3>Podio sombreros</h3>
     <img src="https://i.imgur.com/eNFwCuM.png" style="height:5rem">
-    {% if ranking %}
-    {% for i in ranking %}
+    {% if ranking_personas %}
+    {% for i in ranking_personas %}
     <div class="d-flex text-muted p-3 abs-centro">
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
@@ -21,37 +21,64 @@
     </div>
     {% endfor %}
     {% else %}
-      <div class="alert alert-warning text-center mt-4" role="alert">
+      <div class="alert alert-warning text-center mt-4" id="puntos-personas">
         Todavia nadie tiene el sombrero dorado
       </div>
     {% endif %}
   </div>
-  {% if unidades %}
-  <div class="list-group">
-    {% for i in unidades %}
-      {% if i.actual %}
-      <div id="{{i}}" class="list-group-item list-group-item-action p-3 mb-2 bg-success text-white" aria-current="true">
-      {% else %}
-      <div id="{{i}}" class="list-group-item list-group-item-action p-3 mb-2" aria-current="true">
-      {% endif %}
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{i}}</h5>
+
+  <div class="alert alert-secondary text-center" id="puntos-equipos">
+    <h3>Podio puntos equipos</h3>
+    {% if ranking_equipos %}
+    {% for i in ranking_equipos %}
+    <div class="d-flex text-muted p-3 abs-centro">
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="d-flex justify-content-between">
+          <div class="p-2 abs-centro"><strong class="text-gray-dark">&nbsp {{i.name}}</strong></div>
+          <div class="p-2 no-seleccionable">
+            <span class="badge bg-primary rounded-pill">{{ i.puntos }}</span>
+          </div> 
         </div>
-        <ul class="list-group">
-          {% for j in contenido %}
-            {% if j.unidad == i %}
-            <li class="list-group-item">{{j.nombre}}</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
       </div>
-    <br>
+    </div>
+    {% endfor %}
+    {% else %}
+      <div class="alert alert-warning text-center mt-4" id="puntos-equipos">
+        Los equipos no tienen puntos asignados
+      </div>
+    {% endif %}
   </div>
-  {% endfor %}
+
+  {% if unidades %}
+    <div class="alert alert-secondary text-center" id="unidades">
+      <h3>Temario</h3>
+      <div class="list-group" >
+        {% for i in unidades %}
+          {% if i.actual %}
+          <div id="{{i}}" class="list-group-item list-group-item-action p-3 mb-2 bg-success text-white" aria-current="true">
+          {% else %}
+          <div id="{{i}}" class="list-group-item list-group-item-action p-3 mb-2" aria-current="true">
+          {% endif %}
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{i}}</h5>
+            </div>
+            <ul class="list-group">
+              {% for j in contenido %}
+                {% if j.unidad == i %}
+                <li class="list-group-item">{{j.nombre}}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        <br>
+        {% endfor %}
+      </div>
+    </div>
+    </div>
   {% else %}
-  <div class="alert alert-warning text-center" role="alert">
-    El temario no esta cargado todavia
-  </div>
+    <div class="alert alert-warning text-center" id="unidades">
+      El temario no esta cargado todavia
+    </div>
   {% endif %}
 </main>
 {% endblock %}

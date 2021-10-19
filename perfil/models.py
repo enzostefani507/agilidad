@@ -78,6 +78,7 @@ class Usuario(AbstractUser):
 class Equipo(models.Model):
     numero = models.IntegerField()
     name = models.CharField(max_length=100)
+    puntos = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
