@@ -4,7 +4,27 @@
 <main class="container">
   {% include "base/cartel.html" %}
   <div class="alert alert-secondary text-center" role="alert">
-    Nunca fue tan facil escapar de la monarquia!
+    <h3>Podio sombreros</h3>
+    <img src="https://i.imgur.com/eNFwCuM.png" style="height:5rem">
+    {% if ranking %}
+    {% for i in ranking %}
+    <div class="d-flex text-muted p-3 abs-centro">
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="d-flex justify-content-between">
+          <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{i.foto}}"><strong class="text-gray-dark">&nbsp {{i.username}}</strong></div>
+          <div class="p-2 no-seleccionable">
+            <img src="https://i.imgur.com/eNFwCuM.png" class="icono-barco">
+            <span class="badge bg-primary rounded-pill">{{ i.dorado }}</span>
+          </div> 
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+      <div class="alert alert-warning text-center mt-4" role="alert">
+        Todavia nadie tiene el sombrero dorado
+      </div>
+    {% endif %}
   </div>
   {% if unidades %}
   <div class="list-group">
@@ -29,9 +49,9 @@
   </div>
   {% endfor %}
   {% else %}
-  <div class="alert alert-warning" role="alert">
-        El temario no esta cargado todavia
-      </div>
+  <div class="alert alert-warning text-center" role="alert">
+    El temario no esta cargado todavia
+  </div>
   {% endif %}
 </main>
 {% endblock %}
