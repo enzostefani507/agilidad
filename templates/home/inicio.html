@@ -27,28 +27,6 @@
     {% endif %}
   </div>
 
-  <div class="alert alert-secondary text-center" id="puntos-equipos">
-    <h3>Podio puntos equipos</h3>
-    {% if ranking_equipos %}
-    {% for i in ranking_equipos %}
-    <div class="d-flex text-muted p-3 abs-centro">
-      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-        <div class="d-flex justify-content-between">
-          <div class="p-2 abs-centro"><strong class="text-gray-dark">&nbsp {{i.name}}</strong></div>
-          <div class="p-2 no-seleccionable">
-            <span class="badge bg-primary rounded-pill">{{ i.puntos }}</span>
-          </div> 
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-    {% else %}
-      <div class="alert alert-warning text-center mt-4" id="puntos-equipos">
-        Los equipos no tienen puntos asignados
-      </div>
-    {% endif %}
-  </div>
-
   {% if unidades %}
     <div class="alert alert-secondary text-center" id="unidades">
       <h3>Temario</h3>
