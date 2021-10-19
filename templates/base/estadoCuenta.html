@@ -8,10 +8,13 @@
         {% if user.is_staff is False %}
             <li class="nav-item abs-centro">
                 {% if user.gris_disponible == True %}
+                    <a class=" nav-link" href="{% url 'cambiar' %}">
                     <img src="https://i.imgur.com/NT1eb0x.png"  height="30" class="btn btn-warning nav-link  btn-circle">
                 {% else %}
+                    <a class=" nav-link " disabled="disabled">
                     <img src="https://i.imgur.com/NT1eb0x.png"  height="30" class="btn btn-warning nav-link btn-circle-no-disponible ">
                 {% endif %}
+                </a>
             </li>
         {% else %}
             <li class="nav-item">
