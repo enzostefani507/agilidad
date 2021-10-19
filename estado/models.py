@@ -3,11 +3,11 @@ from perfil.models import Usuario
 
 class cambios(models.Model):
     TIPOS = [
-        ('Dorado','dorado'),
+        ('Naranja','naranja'),
         ('Azul','azul')
     ]
     tipo = models.CharField(
-        max_length=6,
+        max_length=10,
         choices = TIPOS,
     )
     origen = models.ForeignKey(

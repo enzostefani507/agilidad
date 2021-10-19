@@ -63,3 +63,12 @@ class SignInForm(UserCreationForm):
         if user.is_active:
             print('esta activado')
         return user
+
+
+class MiInfo(forms.ModelForm):
+
+    class Meta:
+        model = Usuario
+        fields = ("username","foto","email", )
+
+  

@@ -15,43 +15,55 @@
         </div>
       </div>
     </div>
-    <div class="d-flex text-muted p-3 abs-centro">
-      <div class="pb-3 mb-0 small lh-sm  w-100">
-        <div class="d-flex justify-content-between">
-          <div class="p-2 abs-centro"><strong class="text-gray-dark">Equipo {{ numeroEquipo }}:</strong>&nbsp  {{  nombreEquipo }}</div>
+    {% if perfil.is_staff is False %}
+      <div class="d-flex text-muted p-3 abs-centro">
+        <div class="pb-3 mb-0 small lh-sm  w-100">
+          <div class="d-flex justify-content-between">
+            <div class="p-2 abs-centro"><strong class="text-gray-dark">Equipo {{ numeroEquipo }}:</strong>&nbsp  {{  nombreEquipo }}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="p-2 abs-centro"><strong class="text-gray-dark">Sombreros dorados :</strong>&nbsp  {{  perfil.dorado }}</div>
+          </div>
         </div>
       </div>
+    {% endif %}
+  </div>
+  {% if perfil.is_staff is False %}
+    <div class="my-3 p-3 bg-body rounded shadow-sm" id="trofeos">
+      <h6 class="border-bottom pb-2 mb-0">Mis Trofeos</h6>
+      {% if transferencias %}
+        {% for i in transferencias %}
+          {% if i.tipo == 'Naranja' %}
+            <div class="my-3 p-3 bg-body rounded ">
+              <div class="d-flex text-muted p-3 abs-centro">
+                <div class="pb-3 mb-0 small lh-sm w-100">
+                  <div class="d-flex justify-content-between">
+                    <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"><strong class="text-gray-dark">&nbsp {{i.origen}}</strong></div>
+                    <div class="p-2 no-seleccionable"><img src="https://i.imgur.com/lMcSYHr.png" class="icono-barco"><span class="badge bg-warning rounded-pill">+1</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if i.tipo == 'Azul' %}
+            <div class="my-3 p-3 bg-body rounded ">
+              <div class="d-flex text-muted p-3 abs-centro">
+                <div class="pb-3 mb-0 small lh-sm w-100">
+                  <div class="d-flex justify-content-between">
+                    <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"><strong class="text-gray-dark">&nbsp {{i.origen}}</strong></div>
+                    <div class="p-2 no-seleccionable"><img src="https://i.imgur.com/JL6bliV.png" class="icono-barco"><span class="badge bg-warning rounded-pill">+1</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <div class="alert alert-danger text-center" role="alert">
+          Aun no tienes sombreros 😔
+        </div>
+      {% endif %}
     </div>
-  </div>
-
-  <div class="my-3 p-3 bg-body rounded shadow-sm" id="trofeos">
-    <h6 class="border-bottom pb-2 mb-0">Mis Trofeos</h6>
-    {% for i in transferencias %}
-      {% if i.tipo == 'Dorado' %}
-        <div class="my-3 p-3 bg-body rounded ">
-          <div class="d-flex text-muted p-3 abs-centro">
-            <div class="pb-3 mb-0 small lh-sm w-100">
-              <div class="d-flex justify-content-between">
-                <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"><strong class="text-gray-dark">&nbsp {{i.origen}}</strong></div>
-                <div class="p-2 no-seleccionable"><img src="https://i.imgur.com/lMcSYHr.png" class="icono-barco"><span class="badge bg-warning rounded-pill">+1</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-      {% if i.tipo == 'Azul' %}
-        <div class="my-3 p-3 bg-body rounded ">
-          <div class="d-flex text-muted p-3 abs-centro">
-            <div class="pb-3 mb-0 small lh-sm w-100">
-              <div class="d-flex justify-content-between">
-                <div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"><strong class="text-gray-dark">&nbsp {{i.origen}}</strong></div>
-                <div class="p-2 no-seleccionable"><img src="https://i.imgur.com/JL6bliV.png" class="icono-barco"><span class="badge bg-warning rounded-pill">+1</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
+  {% endif %}
 </main>
 {% endblock %}

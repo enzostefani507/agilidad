@@ -3,10 +3,11 @@ from perfil.models import Usuario,Equipo
 from estado.models import cambios
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
-from perfil.forms import SignInForm, LoginForm
+from perfil.forms import SignInForm, LoginForm,MiInfo
 from django.shortcuts import render,redirect
 from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
@@ -64,3 +65,13 @@ class miPerfil(LoginRequiredMixin, DetailView):
     def get_queryset(self, *args, **kwargs):
         return Usuario.objects.filter(pk=self.request.user.id)
 
+class UsuarioUpdateView(UpdateView):
+    model = Usuario
+    form_class = MiInfo
+    template_name = 'perfil/editar.html'
+    login_url = 'login'
+    success_url = reverse_lazy('perfil')
+
+    def get_context_data(self, **kwargs):
+        context = super(UsuarioUpdateView, self).get_context_data(**kwargs)
+        context['nombreSeccion']='Edita tu perfil'

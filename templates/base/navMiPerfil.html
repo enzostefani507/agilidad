@@ -17,7 +17,7 @@
             <a class="nav-link" href="{% url 'felicidad' %}">Felicidad</a>
           </li>
         </ul>
-        {% include "base/estadoCuenta.html" %}
+        {% include "base/estadoCuenta.html" %}  
       </div>
     </div>
 </nav>
@@ -25,7 +25,9 @@
 <div class="nav-scroller bg-body shadow-sm">
   <nav class="nav nav-underline" aria-label="Secondary navigation">
     <a class="nav-link" href="#misdatos">Mis datos</a>
-    <a class="nav-link" href="#">Editar datos</a>
+    <a class="nav-link" href="{% url 'editar' pk=user.id%}">Editar datos</a>
+    {% if perfil.is_staff is False %}
     <a class="nav-link" href="#trofeos">Ver mis trofeos</a>
+    {% endif %}
   </nav>
 </div>

@@ -19,10 +19,19 @@ def transaccion(request):
             cambio = form.save(commit=False)
             dest = cambio.destino
             if user != dest:
-                if cambio.tipo == 'Dorado':
-                    dest.dorado += 1
-                else:
-                    dest.azul += 1
+                context['form'] = form
+                if cambio.tipo == 'Naranja':
+                    if dest.equipo != user.equipo:
+                        dest.naranja += 1
+                    else:
+                        context['catch'] = "Sombreros naranjas son para miembros de otro equipo"
+                        return render(request, 'estado/cambiar.html',context)
+                if cambio.tipo == 'Azul':
+                    if dest.equipo == user.equipo:
+                        dest.azul += 1
+                    else:
+                        context['catch'] = "Sombreros Azules son para miembros de tu equipo"
+                        return render(request, 'estado/cambiar.html',context)
                 cambio.origen = user
                 tipo = cambio.tipo
                 user.gris_disponible = False

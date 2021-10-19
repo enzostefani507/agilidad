@@ -1,0 +1,14 @@
+{% include "base/index.html" %}
+{% block estilo %}
+<link href="../../static/css/miPerfil.css" rel="stylesheet">
+{% endblock %}
+{% include "base/navMiPerfil.html" %}
+{% block content %}
+<main class="container">
+  {% include "base/cartel.html" %}
+  <form method="post">{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Update">
+  </form>
+</main>
+{% endblock %}

@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
-
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None):
         if not email:
@@ -66,6 +65,7 @@ class Usuario(AbstractUser):
         default=True,
     )
     azul = models.IntegerField(default=0)
+    naranja = models.IntegerField(default=0)
     dorado = models.IntegerField(default=0)
     equipo = models.ForeignKey('Equipo',null=True,on_delete=models.SET_NULL)
     EMAIL_FIELD = 'email'
@@ -73,7 +73,7 @@ class Usuario(AbstractUser):
     REQUIRED_FIELDS = ['username','foto']
 
     def __str__(self):
-        return self.username
+        return self.username 
 
 class Equipo(models.Model):
     numero = models.IntegerField()
