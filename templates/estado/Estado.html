@@ -1,3 +1,4 @@
+{% load static %}
 {% include "base/index.html" %}
 {% block estilo %}
 {% endblock %}
@@ -56,4 +57,7 @@
       </div>
     {% endif %}
   <main class="container">
+{% endblock %}
+{% block scri %}
+<script src="{% static 'js/offcanvas.js' %}"></script>
 {% endblock %}

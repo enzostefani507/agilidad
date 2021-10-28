@@ -1,4 +1,5 @@
 {% load crispy_forms_tags %}
+{% load static %}
 {% include "base/index.html" %}
 {% block estilo %}
 {% endblock %}
@@ -31,4 +32,7 @@
       </div>
     </div>  
   <main class="container">
+{% endblock %}
+{% block scri %}
+<script src="{% static 'js/offcanvas.js' %}"></script>
 {% endblock %}
