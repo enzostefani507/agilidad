@@ -22,5 +22,11 @@ class cambios(models.Model):
         on_delete=models.CASCADE,
         related_name="destino_id"
     )
+    mensaje = models.CharField(
+        verbose_name='mensaje',
+        max_length=255,
+        blank = True, 
+        null = False,
+    )
 
 

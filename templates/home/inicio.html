@@ -1,3 +1,4 @@
+{% load static %}
 {% include "base/index.html" %}
 {% include "base/navInicio.html" %}
 {% block content %}
@@ -59,4 +60,8 @@
     </div>
   {% endif %}
 </main>
+{% endblock %}
+{% block scri %}
+<script src="{% static 'js/offcanvas.js' %}"></script>
+<script src="{% static 'js/mostrarMsj.js' %}"></script>
 {% endblock %}

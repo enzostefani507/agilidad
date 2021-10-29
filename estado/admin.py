@@ -2,7 +2,7 @@ from django.contrib import admin
 from estado.models import cambios
 
 class cambiosAdmin(admin.ModelAdmin):
-    fields = ('tipo','origen','destino')
+    fields = ('tipo','origen','destino','mensaje')
     
     def save_model(self, request, obj, form, change):
         obj.origen = request.user

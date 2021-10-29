@@ -20,12 +20,8 @@
 </nav>
 <div class="nav-scroller bg-body shadow-sm">
     <nav class="nav nav-underline" aria-label="Secondary navigation">
-    {% if equipo_list %}
-      {% for i in equipo_list %}
-      <a class="nav-link" href="#{{ i.name }}">Equipo {{i.numero}} - {{ i.name }} </a>
-      {% endfor %}
-    {% else %}
-        <a class="nav-link" href="#">        No hay equipo registrados        </a>
-    {% endif %}
+      <a class="nav-link" href="#misdatos">Datos</a>
+      <a class="nav-link" href="#dorados">Dorados</a>
+      <a class="nav-link" href="#misdatos">Azules</a>
     </nav>
   </div>
