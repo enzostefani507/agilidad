@@ -2,7 +2,7 @@
 {% include "base/index.html" %}
 {% block estilo %}
 {% endblock %}
-{% include "base/navEstado.html" %}
+{% include "base/navTrans.html" %}
 {% block content %}
 	<main class="container">
 		{% include "base/cartel.html" %}
@@ -41,7 +41,7 @@
 			{% endif %}
 		</div>
 
-			<div class="my-3 p-3 bg-body rounded shadow-sm">
+			<div class="my-3 p-3 bg-body rounded shadow-sm" id="dorados">
 				<h6 class="border-bottom pb-2 mb-0">De otros equios <img src="https://i.imgur.com/lMcSYHr.png" class="icono-barco"></h6>
 				<div class="d-flex text-muted p-3 abs-centro">
 					<div class="pb-3 mb-0 small lh-sm bottom w-100">
@@ -66,8 +66,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="my-3 p-3 bg-body rounded shadow-sm">
-				<h6 class="border-bottom pb-2 mb-0" id="{{ i.name }}">De su propio equipo<img src="https://i.imgur.com/JL6bliV.png" class="icono-barco"></h6>
+			<div class="my-3 p-3 bg-body rounded shadow-sm" id="azules">
+				<h6 class="border-bottom pb-2 mb-0">De su propio equipo<img src="https://i.imgur.com/JL6bliV.png" class="icono-barco"></h6>
 				<div class="d-flex text-muted p-3 abs-centro">
 					<div class="pb-3 mb-0 small lh-sm  w-100">
 						{%if transacciones_azul %}
