@@ -67,7 +67,7 @@ class cambiosList(ListView):
     
     def get_queryset(self):
         self.interes = self.kwargs['pk']
-        transacciones = transacciones = cambios.objects.filter(id=self.interes) #aca esta el error, que no muestra lo que deberia
+        transacciones = transacciones = cambios.objects.filter(destino=self.interes)
         self.transacciones_dorado = transacciones.filter(tipo='Naranja')
         self.transacciones_azul = transacciones.filter(tipo='Azul')
         self.destino = Usuario.objects.filter(pk=self.interes).first()
