@@ -4,7 +4,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a8*wts)jw+c7epmd9kn6u85ypg_$vatl_z!f9l*%#uk&c9xfz)'
 DEBUG = False
-ALLOWED_HOSTS = ['https://agilidad.herokuapp.com/']
+ALLOWED_HOSTS = ['.herokuapp.com/']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
