@@ -1,0 +1,98 @@
+{% load static %}
+{% include "base/index.html" %}
+{% block estilo %}
+{% endblock %}
+{% include "base/navEstado.html" %}
+{% block content %}
+	<main class="container">
+		{% include "base/cartel.html" %}
+		<div class="my-3 p-3 bg-body rounded shadow-sm" id="misdatos">
+			<h6 class="border-bottom pb-2 mb-0">¿Quien es {{destino.username}}?</h6>
+			<div class="d-flex text-muted p-3 abs-centro">
+				<div class="pb-3 mb-0 small lh-sm  w-100">
+					<div class="d-flex justify-content-between">
+						<div class="p-2 abs-centro"><img class="foto-mi-perfil no-seleccionable" style="width: 6rem;height: 6rem;border-radius:50%" src="{{ destino.foto }}"><strong class="text-gray-dark">&nbsp {{ destino.username}}</strong></div>
+					</div>
+				</div>
+			</div>
+			{% if destino.is_staff is False %}
+				<div class="d-flex text-muted p-3 abs-centro">
+					<div class="pb-3 mb-0 small lh-sm  w-100">
+						<div class="d-flex justify-content-between">
+							<div class="p-2 abs-centro"><strong class="text-gray-dark">Equipo:</strong>&nbsp  {{  destino.equipo }}</div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<div class="p-2 abs-centro"><strong class="text-gray-dark">Sombreros dorados :</strong>&nbsp  {{  destino.dorado }}
+								<img src="https://i.imgur.com/eNFwCuM.png" style="height:1rem">
+							</div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<div class="p-2 abs-centro"><strong class="text-gray-dark">Sombreros naranjas :</strong>&nbsp  {{  destino.naranja }}
+								<img src="https://i.imgur.com/lMcSYHr.png" style="height:1rem">
+							</div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<div class="p-2 abs-centro"><strong class="text-gray-dark">Sombreros azules :</strong>&nbsp  {{  destino.azul }}
+								<img src="https://i.imgur.com/JL6bliV.png" style="height:1rem">
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+
+			<div class="my-3 p-3 bg-body rounded shadow-sm">
+				<h6 class="border-bottom pb-2 mb-0">De otros equios <img src="https://i.imgur.com/lMcSYHr.png" class="icono-barco"></h6>
+				<div class="d-flex text-muted p-3 abs-centro">
+					<div class="pb-3 mb-0 small lh-sm bottom w-100">
+						{%if transacciones_dorado %}
+						{% for i in transacciones_dorado %}
+						<div class="d-flex justify-content-between">
+							<div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"   alt="foto origen"><strong class="text-gray-dark">&nbsp {{ i.origen.username }}</strong></div>
+						</div>
+						<div class="d-flex justify-content-between px-5">
+							{% if i.mensaje|length > 0 %}
+								<p>💬{{i.mensaje}}<span class="badge bg-warning rounded-pill mx-3">+1</span></p>
+							{% else %}
+								<p>💬{{i.origen}} solo le dejo el sombrero, no un mensaje.<span class="badge bg-warning rounded-pill mx-3">+1</span></p>
+							{% endif %}
+						</div>  
+						{% endfor %}
+						{% else %}
+						<div class="alert alert-warning text-center" role="alert">
+							Todavia no tiene sombreros dorados!
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="my-3 p-3 bg-body rounded shadow-sm">
+				<h6 class="border-bottom pb-2 mb-0" id="{{ i.name }}">De su propio equipo<img src="https://i.imgur.com/JL6bliV.png" class="icono-barco"></h6>
+				<div class="d-flex text-muted p-3 abs-centro">
+					<div class="pb-3 mb-0 small lh-sm  w-100">
+						{%if transacciones_azul %}
+						{% for i in transacciones_azul %}
+						<div class="d-flex justify-content-between">
+							<div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"   alt="foto origen"><strong class="text-gray-dark">&nbsp {{ i.origen.username }}</strong></div>
+						</div>
+						<div class="d-flex justify-content-between px-5">
+							{% if i.mensaje|length > 0 %}
+								<p>💬{{i.mensaje}}<span class="badge bg-warning rounded-pill mx-3">+1</span></p>
+							{% else %}
+								<p>💬{{i.origen}} solo le dejo el sombrero, no un mensaje.<span class="badge bg-primary rounded-pill mx-3">+1</span></p>
+							{% endif %}
+						</div>  
+						{% endfor %}
+						{% else %}
+						<div class="alert alert-warning text-center" role="alert">
+							Todavia no tiene sombreros azules!
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+	<main class="container">
+{% endblock %}
+{% block scri %}
+<script src="{% static 'js/offcanvas.js' %}"></script>
+{% endblock %}

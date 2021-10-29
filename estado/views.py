@@ -60,5 +60,22 @@ class estado(LoginRequiredMixin,ListView):
         user = Usuario.objects.filter(pk=self.request.user.id).first()
         context['perfil'] = user
         return context
-
-
+        
+class cambiosList(ListView):
+    model = cambios
+    template_name = 'estado/cambios.html'
+    
+    def get_queryset(self):
+        self.interes = self.kwargs['pk']
+        transacciones = transacciones = cambios.objects.filter(id=self.interes)
+        self.transacciones_dorado = transacciones.filter(tipo='Naranja')
+        self.transacciones_azul = transacciones.filter(tipo='Azul')
+        self.destino = Usuario.objects.filter(pk=self.interes).first()
+        
+    def get_context_data(self,*args, **kwargs):
+        context = super(cambiosList, self).get_context_data(**kwargs)
+        context['transacciones_dorado'] = self.transacciones_dorado
+        context['transacciones_azul'] = self.transacciones_azul
+        context['nombreSeccion']='¿Que le dijeron?'
+        context['destino'] = self.destino
+        return context

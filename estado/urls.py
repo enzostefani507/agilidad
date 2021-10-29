@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from estado.views import estado,transaccion
+from django.urls import path
+from estado.views import estado,transaccion,cambiosList
 
 
 urlpatterns = [
-    url('crear_cambio/', transaccion, name='cambiar'),
-    url('', estado.as_view(), name='estado'),
+    path('ver_cambio/<int:pk>/',cambiosList.as_view(),name='cambios'),
+    path('crear_cambio/', transaccion, name='cambiar'),
+    path('', estado.as_view(), name='estado'),
 ]
