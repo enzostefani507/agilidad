@@ -6,4 +6,5 @@ class CambioForm(forms.ModelForm):
 
     class Meta:
         model = cambios
-        fields = ('tipo','destino','mensaje')
+        #fields = ('tipo','destino','mensaje')
+        fields = ('tipo','destino')
