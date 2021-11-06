@@ -50,13 +50,6 @@
 						<div class="d-flex justify-content-between">
 							<div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"   alt="foto origen"><strong class="text-gray-dark">&nbsp {{ i.origen.username }}</strong></div>
 						</div>
-						<div class="d-flex justify-content-between px-5">
-							{% if i.mensaje|length > 0 %}
-								<p>💬{{i.mensaje}}<span class="badge bg-warning rounded-pill mx-3">+1</span></p>
-							{% else %}
-								<p>💬{{i.origen}} solo le dejo el sombrero, no un mensaje.<span class="badge bg-warning rounded-pill mx-3">+1</span></p>
-							{% endif %}
-						</div>  
 						{% endfor %}
 						{% else %}
 						<div class="alert alert-warning text-center" role="alert">
@@ -75,13 +68,6 @@
 						<div class="d-flex justify-content-between">
 							<div class="p-2 abs-centro"><img class="foto-miembro no-seleccionable" src="{{ i.origen.foto }}"   alt="foto origen"><strong class="text-gray-dark">&nbsp {{ i.origen.username }}</strong></div>
 						</div>
-						<div class="d-flex justify-content-between px-5">
-							{% if i.mensaje|length > 0 %}
-								<p>💬{{i.mensaje}}<span class="badge bg-warning rounded-pill mx-3">+1</span></p>
-							{% else %}
-								<p>💬{{i.origen}} solo le dejo el sombrero, no un mensaje.<span class="badge bg-primary rounded-pill mx-3">+1</span></p>
-							{% endif %}
-						</div>  
 						{% endfor %}
 						{% else %}
 						<div class="alert alert-warning text-center" role="alert">
